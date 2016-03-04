@@ -42,3 +42,28 @@ Scenario: Deselecting filters by changing filters
   And the recipient fields should contain: ambermccutchen1996@gmail.com
   And I remove the filters: Oakland Technical High School
   Then the recipient fields should contain: austen.junca@gmail.com, ambermccutchen1996@gmail.com
+
+Scenario: Filter by university as staff
+  As a College Track staff
+  When I select Stanford University as a filter
+  Then I should see student’s emails who go to Stanford University
+
+Scenario: Filter by language as staff
+  As a College Track staff
+  When I select Swahili as the primary language of parents filter
+  Then I should see student’s emails that correspond to parents speaking Swahili
+
+Scenario: Filter by non-citizens as staff
+  As a College Track staff
+  When I select no citizenship access filter
+  Then I should see student’s emails who aren’t US citizens (illegally documented)
+
+Scenario: Filter by thresholds as staff
+  As a College Track staff
+  When I select 33 ACT and 3.8 GPA
+  Then I should see only students with these thresholds
+
+Scenario: Filter by specific groups as staff
+  As a College Track staff
+  When I select Oakland filter
+  Then I should see see student emails that correspond to these centers
