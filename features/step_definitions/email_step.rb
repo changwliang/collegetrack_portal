@@ -7,6 +7,18 @@ Mail.defaults do
   delivery_method :test
 end
 
+Then /^the recipient fields should (not )?contain: (.*)$/ do |option, emails|
+  emails = emails.split(", ")
+  people = page.all('.filter_box .left_fil').map { |e| e.text }
+  emails.each do |email|
+    if option
+      people.should_not include(email)
+    else
+      people.should include(email)
+    end
+  end
+end
+
 Then /^(?:|I )should see the following fields:(.*)$/ do |fields|
   trim_fields = fields.gsub(/,/, ' ')
   trim_fields.split.each do |name|
@@ -54,4 +66,18 @@ Then /^all fields on the email page should be empty$/ do
   expect(page.find('#email_bcc').value).to     be_blank
   expect(page.find('#email_subject').value).to be_blank
   expect(page.find('#email_body').value).to    be_blank
+end
+
+Then /^I wait for a while$/ do
+  sleep 6
+end
+
+
+Then /^(?:|I )click the x button on "(.*)"$/ do |filters|
+  filters = filters.split(",")
+  page.all('#filters .ui_fil').each do |filter|
+    if filters.include?(filter.find('.left_fil').text)
+      filter.find('.x').click
+    end
+  end
 end

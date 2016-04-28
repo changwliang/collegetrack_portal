@@ -1,0 +1,13 @@
+#accordian
+  %ul
+    - session[:filter_values].each_key do |category|
+      %li
+        %h3= category
+        %ul
+          %li
+            - session[:filter_values][category].each do |value|
+              - if value == "Student" or (@filters != '' and @filters != nil and value.class == String and @filters.include?(value))
+                = link_to "#{value}", "", :class => "selected"
+              - else
+                = link_to "#{value}", ""
+                

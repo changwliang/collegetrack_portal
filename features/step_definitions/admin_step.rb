@@ -11,15 +11,17 @@ And /^I click '\+' to add a new user$/ do
 end
 
 And /I click "X" to remove user "(.+)"$/ do |email|
-  page.all('tbody tr').each do |row|
-    within(row) do |entry|
-      if find('td:nth-child(2)').text() == email
-        click_button "X"
-      end
-    end
-  end
-  click_button "Yes"
-  click_button "OK"
+  email = page.find('td', :text => email)
+  tr = email.find(:xpath, "..")
+  x = tr.find('.x_button')
+  x.click
+  # page.all('tbody tr').each do |row|
+  #   within(row) do |entry|
+  #     if find('td:nth-child(2)').text() == email
+  #       click_button "X"
+  #     end
+  #   end
+  # end
 end
 
 Then /^(?:|I )should not see "([^"]*)"$/ do |text|

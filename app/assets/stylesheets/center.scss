@@ -1,7 +1,7 @@
 html {
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  overflow: scroll;
   min-width: 100%;
   min-height: 100%;
 }
@@ -15,7 +15,6 @@ body {
 }
 
 .container{
-  height:100%;
   display:table;
   width: 100%;
   padding: 0;

@@ -3,12 +3,13 @@ ruby '1.9.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
-
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 group :development, :test do
   # Use sqlite3 as the database for Active Record
+  gem 'fake_student', git:'https://github.com/mmzhai/fake_student.git'
   gem 'sqlite3'
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
-  gem 'debugger'
+#  gem 'debugger'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

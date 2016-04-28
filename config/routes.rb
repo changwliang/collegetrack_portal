@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
+  get 'groups/index'
+
   post   'email/',      to: 'email#create',  as: 'emails'
   get    'email/new',   to: 'email#new',     as: 'new_email'
   delete 'email/',      to: 'email#delete',  as: 'delete'
   get    'email/email_list'
   get    'email/user_list'
+
+  get    'groups/' => 'groups#index', :as => :groups
+  get    'groups/add' => 'groups#add', :as => 'add_group'
+  post   'groups/edit' => 'groups#edit', :as => 'edit_group'
+  post   'groups/create' => 'groups#create'
+  post   'groups/delete'  => 'groups#delete', :as => 'delete_group'
 
   get    'admin/' => 'admin#index', :as => :admin
   post   'admin/' => 'admin#new', :as => :new_user

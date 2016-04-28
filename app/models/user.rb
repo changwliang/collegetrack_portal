@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   has_one  :token, dependent: :destroy
   has_many :attachments, dependent: :destroy
+  has_many :groups, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,

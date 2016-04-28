@@ -31,3 +31,7 @@ set_local.sh
 /public/cache/
 # Ignore application configuration
 /config/application.yml
+
+
+# Ignore coverage
+/coverage

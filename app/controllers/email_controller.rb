@@ -5,7 +5,9 @@ class EmailController < ApplicationController
 
   def new
     # Set filter values for _filter partial
-    @filter_values = get_filter_values
+    group_filters = {"Groups" => current_user.groups.each.map{|group| group.name}}
+    @filter_values = group_filters.merge(get_filter_values)
+    session[:filter_values] = @filter_values
   end
 
   def create
@@ -49,7 +51,39 @@ class EmailController < ApplicationController
 
   def email_list
     filters = params[:filters]
-    render json: generate_email(filters).to_json
+    all_filters = get_filter_values
+    extra_filters = {}
+    extra_emails = []
+    filters.each do |category, value|
+      # adding the filters and extra emails of the selected group
+      if category == "Groups"
+        group = current_user.groups.where(:name => value).first
+        extra_emails.concat(group.extra_emails.split(',').map(&:strip))
+        group.filters.split(", ").each do |filter|
+          all_filters.each do |c, v|
+            if v.include? filter
+              if extra_filters.keys.include? c
+                extra_filters[c] << filter
+              else
+                extra_filters[c] = [filter]
+              end
+              break
+            end
+          end
+        end
+      else
+        if extra_filters.keys.include? category
+          if value[0] != "Student"
+            extra_filters[category].concat(value)
+          end
+        else
+          extra_filters[category] = value
+        end
+      end
+    end
+    # combine emails from filters with extra emails from groups
+    emails = generate_email(extra_filters).concat(extra_emails)
+    render json: emails.to_json
   end
 
   def user_list

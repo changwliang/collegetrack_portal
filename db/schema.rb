@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421191043) do
+ActiveRecord::Schema.define(version: 20160406064011) do
 
   create_table "attachments", force: :cascade do |t|
     t.datetime "created_at",          null: false
@@ -25,12 +25,44 @@ ActiveRecord::Schema.define(version: 20150421191043) do
 
   add_index "attachments", ["user_id"], name: "index_attachments_on_user_id"
 
+  create_table "fake_students", force: :cascade do |t|
+    t.string   "race"
+    t.string   "gender"
+    t.string   "name"
+    t.string   "email"
+    t.string   "school"
+    t.string   "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "name"
+    t.string   "filters"
+    t.integer  "user_id"
+    t.string   "extra_emails"
+  end
+
+  add_index "groups", ["user_id"], name: "index_groups_on_user_id"
+
   create_table "salesforce_clients", force: :cascade do |t|
     t.string   "password"
     t.string   "security_token"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string   "session_id", null: false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
 
   create_table "tokens", force: :cascade do |t|
     t.string   "access_token"

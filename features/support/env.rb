@@ -60,6 +60,8 @@ end
 Cucumber::Rails::Database.javascript_strategy = :truncation
 Capybara.default_wait_time = 15
 
+# Replace Selenium with Capybara-webkit
+# Capybara.javascript_driver = :webkit
 
 Before('@reset') do
   @original = ENV['SALESFORCE_PASSWORD']

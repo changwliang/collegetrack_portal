@@ -1,0 +1,192 @@
+// Place all the styles related to the groups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#groups {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	
+}
+
+#groups div.button {
+	height: 80px;
+	width: 250px;
+	background-color: white;
+	margin: 10px;
+	border: 5px solid #00b4f0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 30px;
+
+}
+
+#groups div.cell {
+	height: 80px;
+	width: 250px;
+	background-color: #00b4f0;
+	margin: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 30px; 
+	color: white;
+	font-size: 15px;
+}
+
+#groups div.button button{
+	height: 40px;
+	width: 40px;
+	background-color: #00b4f0;
+	font-size: 30px;
+	color: white;
+	vertical-align: middle;
+	line-height: 40px;
+	border-radius: 40px;
+	border: none;
+
+}
+
+.container {
+	width: 80%;
+	overflow: scroll;
+}
+
+#accordian {
+  font-family: montserrat;
+  margin-left: 50px;
+  margin-top: 20px;
+  background: #e7e7e7;
+  width: 80%;
+  color: white;
+  margin-right: 30px;
+}
+
+/*heading styles*/
+#accordian h3 {
+  font-size: 18px;
+  line-height: 35px;
+  padding: 0 10px;
+  cursor: pointer;
+  background: #767778;
+  margin: 0;
+  border: solid 1px #6F6F6F;
+}
+
+/*iconfont styles*/
+#accordian h3 span {
+  font-size: 19px;
+  margin-right: 10px;
+}
+
+/*list items*/
+#accordian li {
+  list-style-type: none;
+}
+
+/*links*/
+#accordian ul ul li a {
+  color: #6F6F6F;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 30px;
+  display: block;
+  padding: 0 15px;
+  /*transition for smooth hover animation*/
+  transition: all 0.15s;
+}
+
+/*hover effect on links*/
+.selected {
+  background: #00b4f0;
+  border-left: 5px solid #00b4f0;
+}
+
+/*Lets hide the non active LIs by default*/
+#accordian ul ul {
+  display: none;
+}
+
+#accordian li.active ul {
+  display: block;
+}
+
+#accordian ul {
+  margin-bottom: 0;
+}
+
+#accordian button {
+  background-color: #9cc73e;
+  border: none;
+  width: 100%;
+  padding: 2px;
+  height: 30px;
+}
+
+#buttons {
+	display: flex;
+	flew-wrap: wrap;
+	justify-content: space-between;
+	margin: 20px;
+}
+
+.button-tool{
+	background-color: #00b4f0;
+	border-radius: 30px;
+	height: 80px;
+	width: 200px;
+	color: white;
+	font-size: 25px;
+	a {
+		color: white;
+		font-size: 25px;
+	}
+}
+#name {
+	text {
+		font-size: 25px;
+		color: #00b4f0;
+		margin-left: 20px;
+	}
+	input {
+		width: 70%;
+		height: 45px;
+		font-size: 25px;
+		margin-left: 15px;
+		transition: box-shadow 0.3s, border 0.3s;
+		border-radius:10px;
+	}
+}
+#to_input {
+	text {
+		font-size: 25px;
+		color: #00b4f0;
+		margin-left: 20px;
+	}
+	input {
+		width: 82%;
+		height: 45px;
+		font-size: 25px;
+		margin-left: 15px;
+	}
+}
+#additional {
+	text {
+		font-size: 25px;
+		color: #00b4f0;
+		margin-left: 20px;
+	}
+	input {
+		width: 65%;
+		height: 45px;
+		font-size: 25px;
+		margin-left: 15px;
+		transition: box-shadow 0.3s, border 0.3s;
+		border-radius:10px;
+	}
+
+
+
+}
+

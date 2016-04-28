@@ -4,7 +4,10 @@
 
 include ActionDispatch::TestProcess
 
-FactoryGirl.define do
+FactoryGirl.define do  factory :group do
+    
+  end
+
   
   factory :attachment do
     source { fixture_file_upload(Rails.root.join('spec/fixtures/image.gif'), 'image/gif') }
